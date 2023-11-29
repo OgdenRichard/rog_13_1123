@@ -1,7 +1,11 @@
+import { Navbar } from './Navbar';
+
 function Header() {
   return (
     <>
-      <header>bonjour</header>
+      <header>
+        <Navbar />
+      </header>
     </>
   );
 }
