@@ -23,7 +23,7 @@ export const Home = () => {
           </p>
         </div>
         <div className="feature-item">
-          <img src={money} alt="Money Icon" className="feature-icon" />
+          <img className="feature-icon" src={money} alt="Money Icon" />
           <h3 className="feature-item-title">
             More savings means higher rates
           </h3>
