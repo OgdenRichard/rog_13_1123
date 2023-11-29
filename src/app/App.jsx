@@ -4,9 +4,9 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from 'react-router-dom';
-import { Root } from './layouts/Root';
-import { Home } from './pages/Home';
-import './style/App.css';
+import { Root } from '../layouts/Root';
+import { Home } from '../pages/Home';
+import '../style/App.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
