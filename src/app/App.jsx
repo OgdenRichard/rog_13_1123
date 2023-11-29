@@ -7,6 +7,7 @@ import {
 import { Root } from '../layouts/Root';
 import { Home } from '../pages/Home';
 import Login from '../pages/Login';
+import User from '../pages/User';
 import '../style/App.css';
 
 const router = createBrowserRouter(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route path="home" element={<Home />} />
       <Route path="login" element={<Login />} />
+      <Route path="profile" element={<User />} />
     </Route>,
   ),
 );

@@ -11,6 +11,7 @@ export const Navbar = () => {
           alt="Argent Bank Logo"
         />
       </NavLink>
+      <NavLink to="/profile">Test</NavLink>
       <NavLink to="/login">
         <div className="main-nav-item">Sign In</div>
       </NavLink>
