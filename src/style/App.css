@@ -16,11 +16,12 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .main {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
 }
 
 .bg-dark {
@@ -174,12 +175,12 @@ body {
 }
 
 .sign-in-content {
-  box-sizing: border-box;
   background-color: white;
   width: 300px;
   margin: 0 auto;
   margin-top: 3rem;
   padding: 2rem;
+  text-align: center;
 }
 
 .sign-in-icon {
@@ -232,7 +233,6 @@ body {
   margin: 0 auto;
   flex-direction: column;
   padding: 1.5rem;
-  box-sizing: border-box;
   text-align: left;
   margin-bottom: 2rem;
 }
