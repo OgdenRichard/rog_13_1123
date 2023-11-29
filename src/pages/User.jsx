@@ -1,3 +1,6 @@
+import Account from '../components/Account';
+import { account } from '../data/accountPlaceholder';
+
 function User() {
   return (
     <>
@@ -10,9 +13,15 @@ function User() {
             Edit name
           </button>
         </div>
-        <section className="account">A cunt</section>
-        <section className="account">A cunt</section>
-        <section className="account">A cunt</section>
+        {account.length &&
+          account.map((data, index) => (
+            <Account
+              key={index}
+              title={data.title}
+              amount={data.amount}
+              description={data.description}
+            />
+          ))}
       </main>
     </>
   );
