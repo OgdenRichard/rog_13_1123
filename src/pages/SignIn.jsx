@@ -1,4 +1,4 @@
-function Login() {
+function SignIn() {
   return (
     <>
       <main className="main bg-dark">
@@ -28,4 +28,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignIn;

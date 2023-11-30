@@ -12,7 +12,7 @@ export const Navbar = () => {
         />
       </NavLink>
       <NavLink to="/profile">Test</NavLink>
-      <NavLink to="/login" style={{ textDecoration: 'none' }}>
+      <NavLink to="/signin" style={{ textDecoration: 'none' }}>
         <div className="main-nav-item">
           <i className="fa fa-user-circle" /> <span>Sign In</span>
         </div>
