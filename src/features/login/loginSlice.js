@@ -6,11 +6,11 @@ const initialState = {
   isLoggedIn: false,
   login: '',
   password: '',
-  token: '',
-  loading: false,
-  data: [],
-  error: '',
-  mess: '',
+  auth: {
+    loading: false,
+    token: '',
+    error: '',
+  },
 };
 
 export const userLogin = createAsyncThunk(
@@ -37,17 +37,19 @@ const loginSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(userLogin.pending, (state) => {
-      state.loading = true;
+      state.isLoggedIn = false;
+      state.auth.token = '';
+      state.auth.loading = true;
     });
     builder.addCase(userLogin.fulfilled, (state, action) => {
-      state.loading = false;
-      state.data = action.payload;
-      state.error = '';
+      state.isLoggedIn = true;
+      state.auth.loading = false;
+      state.auth.token = action.payload.body.token;
+      state.auth.error = '';
     });
     builder.addCase(userLogin.rejected, (state, action) => {
-      state.loading = false;
-      state.data = [];
-      state.error = action.error.message;
+      state.auth.loading = false;
+      state.auth.error = action.error.message;
     });
   },
 });
