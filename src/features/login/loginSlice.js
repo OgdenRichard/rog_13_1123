@@ -4,6 +4,7 @@ import API_BASE_URL from '../../config/apiSettings';
 
 const initialState = {
   isLoggedIn: false,
+  remember: false,
   login: '',
   password: '',
   auth: {
@@ -34,6 +35,9 @@ const loginSlice = createSlice({
     setPassword: (state, action) => {
       state.password = action.payload;
     },
+    setRemember: (state, action) => {
+      state.remember = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(userLogin.pending, (state) => {
@@ -55,4 +59,4 @@ const loginSlice = createSlice({
 });
 
 export default loginSlice.reducer;
-export const { setPassword, setUsername } = loginSlice.actions;
+export const { setPassword, setUsername, setRemember } = loginSlice.actions;

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setPassword, setUsername, userLogin } from './loginSlice';
+import { setPassword, setUsername, setRemember, userLogin } from './loginSlice';
 
 function LoginView() {
   const username = useSelector((state) => state.login.login);
@@ -27,7 +27,11 @@ function LoginView() {
         </div>
         <div className="input-remember">
           <label htmlFor="remember-me">Remember me</label>
-          <input type="checkbox" id="remember-me" />
+          <input
+            type="checkbox"
+            id="remember-me"
+            onChange={(e) => dispatch(setRemember(e.target.checked))}
+          />
         </div>
         <button
           type="button"
