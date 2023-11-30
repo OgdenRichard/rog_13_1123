@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setPassword, setUsername } from './loginSlice';
+import { setPassword, setUsername, userLogin } from './loginSlice';
 
 function LoginView() {
-  /* const username = useSelector((state) => state.login.login);
-  const password = useSelector((state) => state.login.password); */
+  const username = useSelector((state) => state.login.login);
+  const pass = useSelector((state) => state.login.password);
   const dispatch = useDispatch();
 
   return (
@@ -29,7 +29,13 @@ function LoginView() {
           <label htmlFor="remember-me">Remember me</label>
           <input type="checkbox" id="remember-me" />
         </div>
-        <button type="button" className="sign-in-button">
+        <button
+          type="button"
+          className="sign-in-button"
+          onClick={() =>
+            dispatch(userLogin({ email: username, password: pass }))
+          }
+        >
           Sign In
         </button>
       </form>

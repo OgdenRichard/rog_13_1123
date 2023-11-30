@@ -10,6 +10,7 @@ const initialState = {
   loading: false,
   data: [],
   error: '',
+  mess: '',
 };
 
 export const userLogin = createAsyncThunk(
