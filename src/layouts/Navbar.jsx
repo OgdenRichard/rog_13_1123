@@ -1,9 +1,18 @@
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../features/login/loginSlice';
 import logo from '../assets/argentBankLogo.png';
 
 export const Navbar = () => {
   const userConnected = useSelector((state) => state.login.isLoggedIn);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/home', { replace: true });
+  };
+
   return (
     <nav className="main-nav">
       <NavLink to="/home" style={{ textDecoration: 'none' }}>
@@ -25,21 +34,21 @@ export const Navbar = () => {
             </NavLink>
           )}
         </span>
-        <span>
-          {userConnected && (
-            <>
+        {userConnected && (
+          <>
+            <span className="nav-logout" onClick={() => handleLogout()}>
               <i className="fa fa-sign-out" />
-              <NavLink to="/home" style={{ textDecoration: 'none' }}>
-                Sign Out
-              </NavLink>
-            </>
-          )}
-          {!userConnected && (
+              Sign Out
+            </span>
+          </>
+        )}
+        {!userConnected && (
+          <>
             <NavLink to="/signin" style={{ textDecoration: 'none' }}>
               Sign In
             </NavLink>
-          )}
-        </span>
+          </>
+        )}
       </div>
     </nav>
   );

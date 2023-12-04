@@ -38,6 +38,10 @@ const loginSlice = createSlice({
     setRemember: (state, action) => {
       state.remember = action.payload;
     },
+    logout: (state) => {
+      state.isLoggedIn = false;
+      state.auth.token = '';
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(userLogin.pending, (state) => {
@@ -59,4 +63,4 @@ const loginSlice = createSlice({
 });
 
 export default loginSlice.reducer;
-export const { setPassword, setUsername, setRemember } = loginSlice.actions;
+export const { setPassword, setUsername, setRemember, logout } = loginSlice.actions;

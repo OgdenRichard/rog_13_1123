@@ -90,6 +90,14 @@ button:hover {
   margin-right: 0.5em;
 }
 
+.nav-logout {
+  font-weight: 600;
+}
+
+.nav-logout:hover {
+  cursor: pointer;
+}
+
 .hero {
   background-image: url('../assets/bank-tree.jpeg');
   background-position: 0 -50px;
