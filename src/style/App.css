@@ -72,7 +72,7 @@ button:hover {
 }
 
 .main-nav-item span {
-/*   display: inline-block; */
+  /*   display: inline-block; */
   margin-left: 0.5rem;
 }
 
@@ -84,6 +84,10 @@ button:hover {
 .main-nav-logo-image {
   max-width: 100%;
   width: 200px;
+}
+
+.nav-username {
+  margin-right: 1em;
 }
 
 .hero {
