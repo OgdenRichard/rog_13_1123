@@ -72,7 +72,6 @@ button:hover {
 }
 
 .main-nav-item span {
-  /*   display: inline-block; */
   margin-left: 0.5rem;
 }
 
@@ -86,8 +85,9 @@ button:hover {
   width: 200px;
 }
 
-.nav-username {
-  margin-right: 1em;
+.icon-username,
+.fa-sign-out {
+  margin-right: 0.5em;
 }
 
 .hero {
