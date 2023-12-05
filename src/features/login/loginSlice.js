@@ -16,12 +16,22 @@ const initialState = {
 
 export const userLogin = createAsyncThunk(
   'login/userLogin',
-  async (loginData) => {
+  async (loginData, { rejectWithValue }) => {
     const body = JSON.stringify(loginData);
-    const response = await axios.post(`${API_BASE_URL}/user/login`, body, {
-      headers: { 'Content-Type': 'application/json' },
-    });
-    return response.data;
+    try {
+      const response = await axios.post(`${API_BASE_URL}/user/login`, body, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(
+        error?.response?.data?.message ||
+          error?.response?.data.error ||
+          error?.response?.data ||
+          error?.message ||
+          error.toString(),
+      );
+    }
   },
 );
 
@@ -57,7 +67,7 @@ const loginSlice = createSlice({
     });
     builder.addCase(userLogin.rejected, (state, action) => {
       state.auth.loading = false;
-      state.auth.error = action.error.message;
+      state.auth.error = action.error;
     });
   },
 });
