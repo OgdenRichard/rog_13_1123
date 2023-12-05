@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 
-function ProtectedRoutes({ children }) {
+function ProtectedRoutes() {
   const userConnected = useSelector((state) => state.login.isLoggedIn);
 
   if (!userConnected) {

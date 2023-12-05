@@ -59,6 +59,7 @@ const loginSlice = createSlice({
       state.auth.token = '';
       state.auth.loading = true;
     });
+    // TODO reset credentials on success or error
     builder.addCase(userLogin.fulfilled, (state, action) => {
       state.isLoggedIn = true;
       state.auth.loading = false;

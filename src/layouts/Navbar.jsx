@@ -10,7 +10,7 @@ export const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/home', { replace: true });
+    navigate('/', { replace: true });
   };
 
   return (

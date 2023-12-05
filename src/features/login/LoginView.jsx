@@ -20,6 +20,7 @@ function LoginView() {
               onChange={(e) => dispatch(setUsername(e.target.value))}
             />
           </div>
+          {/*  TODO : wrap input in label as in codevo */}
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
