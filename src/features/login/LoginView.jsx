@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { setPassword, setUsername, setRemember, userLogin } from './loginSlice';
 
 function LoginView() {
@@ -7,7 +7,6 @@ function LoginView() {
   const pass = useSelector((state) => state.login.password);
   const userConnected = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   return (
     <>
@@ -48,7 +47,7 @@ function LoginView() {
           </button>
         </form>
       ) : (
-        navigate('/profile')
+        <Navigate to="/profile" />
       )}
     </>
   );

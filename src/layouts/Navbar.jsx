@@ -34,15 +34,14 @@ export const Navbar = () => {
             </NavLink>
           )}
         </span>
-        {userConnected && (
+        {userConnected ? (
           <>
             <span className="nav-logout" onClick={() => handleLogout()}>
               <i className="fa fa-sign-out" />
               Sign Out
             </span>
           </>
-        )}
-        {!userConnected && (
+        ) : (
           <>
             <NavLink to="/signin" style={{ textDecoration: 'none' }}>
               Sign In
