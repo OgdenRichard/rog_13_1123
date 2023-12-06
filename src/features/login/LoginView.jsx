@@ -13,29 +13,34 @@ function LoginView() {
       {!userConnected ? (
         <form action="">
           <div className="input-wrapper">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              onChange={(e) => dispatch(setUsername(e.target.value))}
-            />
+            <label htmlFor="username">
+              Username
+              <input
+                type="text"
+                id="username"
+                onChange={(e) => dispatch(setUsername(e.target.value))}
+              />
+            </label>
           </div>
-          {/*  TODO : wrap input in label as in codevo */}
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
-            <input
-              type="text"
-              id="password"
-              onChange={(e) => dispatch(setPassword(e.target.value))}
-            />
+            <label htmlFor="password">
+              Password
+              <input
+                type="text"
+                id="password"
+                onChange={(e) => dispatch(setPassword(e.target.value))}
+              />
+            </label>
           </div>
           <div className="input-remember">
-            <label htmlFor="remember-me">Remember me</label>
-            <input
-              type="checkbox"
-              id="remember-me"
-              onChange={(e) => dispatch(setRemember(e.target.checked))}
-            />
+            <label htmlFor="remember-me">
+              Remember me
+              <input
+                type="checkbox"
+                id="remember-me"
+                onChange={(e) => dispatch(setRemember(e.target.checked))}
+              />
+            </label>
           </div>
           <button
             type="button"

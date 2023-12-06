@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { ordered, restocked } from './cakeSlice';
 
-export const CakeView = () => {
+const CakeView = () => {
   const numOfCakes = useSelector((state) => state.cake.numOfCakes);
   const dispatch = useDispatch();
   return (
@@ -16,3 +16,4 @@ export const CakeView = () => {
     </div>
   );
 };
+export default CakeView;
