@@ -9,7 +9,7 @@ const initialState = {
   data: null,
   status: {
     loading: false,
-    error: '',
+    error: null,
   },
 };
 

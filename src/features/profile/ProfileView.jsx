@@ -18,8 +18,14 @@ function ProfileView() {
 
   return (
     <>
-      {!loading && data ? (
-        <UserHeader firstName={data.firstName} lastName={data.lastName} />
+      {!loading ? (
+        <>
+          {data ? (
+            <UserHeader firstName={data.firstName} lastName={data.lastName} />
+          ) : (
+            <>Error</>
+          )}
+        </>
       ) : (
         <>Loading</>
       )}

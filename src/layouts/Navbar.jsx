@@ -6,7 +6,6 @@ import logo from '../assets/argentBankLogo.png';
 export const Navbar = () => {
   const userConnected = useSelector((state) => state.login.isLoggedIn);
   const data = useSelector((state) => state.profile.data);
-  // const loading = useSelector((state) => state.profile.status.loading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
