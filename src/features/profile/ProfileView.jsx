@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserData } from './profileSlice';
+import UserHeader from '../../components/UserHeader';
 
 function ProfileView() {
   const userConnected = useSelector((state) => state.login.isLoggedIn);
@@ -18,17 +19,7 @@ function ProfileView() {
   return (
     <>
       {!loading && data ? (
-        <>
-          <div className="user-header">
-            <h1>
-              Welcome back <br />
-              {data.firstName || ''} {data.lastName || ''}
-            </h1>
-            <button type="button" className="edit-button">
-              Edit name
-            </button>
-          </div>
-        </>
+        <UserHeader firstName={data.firstName} lastName={data.lastName} />
       ) : (
         <>Loading</>
       )}
