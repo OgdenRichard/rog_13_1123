@@ -51,12 +51,12 @@ const loginSlice = createSlice({
     logout: (state) => {
       state.isLoggedIn = false;
       state.auth.token = '';
+      state.password = '';
+      state.login = state.remember ? state.login : '';
     },
   },
   extraReducers: (builder) => {
     builder.addCase(userLogin.pending, (state) => {
-      state.isLoggedIn = false;
-      state.auth.token = '';
       state.auth.loading = true;
     });
     // TODO reset credentials on success or error
@@ -64,6 +64,7 @@ const loginSlice = createSlice({
       state.isLoggedIn = true;
       state.auth.loading = false;
       state.auth.token = action.payload.body.token;
+      state.password = '';
       state.auth.error = '';
     });
     builder.addCase(userLogin.rejected, (state, action) => {
