@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Account({ title, amount, description }) {
   return (
     <>
@@ -16,5 +18,17 @@ function Account({ title, amount, description }) {
     </>
   );
 }
+
+Account.propTypes = {
+  title: PropTypes.string,
+  amount: PropTypes.string,
+  description: PropTypes.string,
+};
+
+Account.defaultProps = {
+  title: '',
+  amount: '',
+  description: '',
+};
 
 export default Account;
