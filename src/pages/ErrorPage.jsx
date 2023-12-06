@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 export function ErrorPage({ message }) {
   return (
-    <main>
-      <div id="error-page">
+    <main className="main bg-dark">
+      <div className="error__container" id="error-page">
         <h1>Erreur</h1>
         <h2>{message}</h2>
       </div>

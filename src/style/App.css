@@ -310,6 +310,11 @@ button:hover {
   color: #fff;
 }
 
+.error__container {
+  padding: 5px 20px;
+  color: white;
+}
+
 @media (min-width: 720px) {
   .account {
     flex-direction: row;
