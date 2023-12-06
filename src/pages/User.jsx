@@ -1,6 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Account from '../components/Account';
+import ProfileView from '../features/profile/ProfileView';
 import { account } from '../data/accountPlaceholder';
 
 function User() {
@@ -8,14 +9,7 @@ function User() {
   return (
     <>
       <main className="main bg-dark">
-        <div className="user-header">
-          <h1>
-            Welcome back <br /> Jean-Michel
-          </h1>
-          <button type="button" className="edit-button">
-            Edit name
-          </button>
-        </div>
+        <ProfileView />
         {account.length &&
           account.map((data, index) => (
             <Account
