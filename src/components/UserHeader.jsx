@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import ModalView from '../features/edit/ModalView';
+import ModalFormView from '../features/edit/ModalFormView';
 
 function UserHeader(props) {
   const { firstName, lastName } = props;
@@ -21,7 +21,7 @@ function UserHeader(props) {
           Edit name
         </button>
       </div>
-      <ModalView modalShow={showModal} closeModal={closeModal} />
+      <ModalFormView modalShow={showModal} closeModal={closeModal} />
     </>
   );
 }

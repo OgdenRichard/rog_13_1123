@@ -10,35 +10,37 @@ const initialState = {
   },
 };
 
-export const getUserData = createAsyncThunk(
-  'profile/getUserData',
-  async (token) => {
-    const response = await axios.post(`${API_BASE_URL}/user/profile`, null, {
+export const editUserName = createAsyncThunk(
+  'modalForm/editUserName',
+  async (data) => {
+    const body = JSON.stringify(data.username);
+    const response = await axios.put(`${API_BASE_URL}/user/profile`, body, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${data.token}`,
+        'Content-Type': 'application/json',
       },
     });
     return response.data;
   },
 );
 
-const profileSlice = createSlice({
-  name: 'user',
+const modalFormSlice = createSlice({
+  name: 'editProfile',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(getUserData.pending, (state) => {
+    builder.addCase(editUserName.pending, (state) => {
       state.status.loading = true;
       state.status.error = '';
     });
-    builder.addCase(getUserData.fulfilled, (state, action) => {
+    builder.addCase(editUserName.fulfilled, (state, action) => {
       state.status.loading = false;
       state.data = action.payload.body;
     });
-    builder.addCase(getUserData.rejected, (state, action) => {
+    builder.addCase(editUserName.rejected, (state, action) => {
       state.status.loading = false;
       state.status.error = action.error;
     });
   },
 });
 
-export default profileSlice.reducer;
+export default modalFormSlice.reducer;
