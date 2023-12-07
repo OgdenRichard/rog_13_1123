@@ -1,29 +1,44 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function ModalView({ modalShow, setModalShow }) {
+function ModalView({ modalShow, closeModal }) {
   return (
     <>
       <Modal
         show={modalShow}
-        onHide={setModalShow}
+        onHide={closeModal}
         backdrop="static"
         keyboard={false}
         centered
+        style={{ backgroundColor: 'rgba(52, 52, 52, 0.8)' }}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Edit username</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          I will not close if you click outside me. Do not even try to press
-          escape key.
+          <div className="input-wrapper">
+            <label htmlFor="firstname">
+              First name
+              <input type="text" id="firstname" />
+            </label>
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="lastname">
+              Last name
+              <input type="text" id="lastname" />
+            </label>
+          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={setModalShow}>
-            Close
-          </Button>
-          <Button variant="primary">Understood</Button>
+          <button
+            type="button"
+            className="cancel-button"
+            onClick={() => closeModal()}
+          >
+            Cancel
+          </button>
+          <button type="button" className="edit-button">
+            Send
+          </button>
         </Modal.Footer>
       </Modal>
     </>

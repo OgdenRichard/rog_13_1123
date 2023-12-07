@@ -21,7 +21,7 @@ function UserHeader(props) {
           Edit name
         </button>
       </div>
-      <ModalView modalShow={showModal} setModalShow={closeModal} />
+      <ModalView modalShow={showModal} closeModal={closeModal} />
     </>
   );
 }
