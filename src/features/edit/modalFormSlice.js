@@ -5,6 +5,7 @@ import API_BASE_URL from '../../config/apiSettings';
 const initialState = {
   data: null,
   status: {
+    success: false,
     loading: false,
     error: null,
   },
@@ -30,10 +31,12 @@ const modalFormSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(editUserName.pending, (state) => {
       state.status.loading = true;
+      state.status.success = false;
       state.status.error = '';
     });
     builder.addCase(editUserName.fulfilled, (state, action) => {
       state.status.loading = false;
+      state.status.success = true;
       state.data = action.payload.body;
     });
     builder.addCase(editUserName.rejected, (state, action) => {

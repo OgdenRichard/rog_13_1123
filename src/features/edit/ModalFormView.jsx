@@ -1,13 +1,28 @@
 import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { editUserName } from './modalFormSlice';
 import { useState } from 'react';
+import { editUserName } from './modalFormSlice';
 
 function ModalView({ modalShow, closeModal }) {
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
   const token = useSelector((state) => state.login.auth.token);
+  const updateSuccess = useSelector((state) => state.edit.status.success);
   const dispatch = useDispatch();
+  const handleSubmit = () => {
+    dispatch(
+      editUserName({
+        token: token,
+        username: {
+          firstName: firstname,
+          lastName: lastname,
+        },
+      }),
+    );
+    if (updateSuccess) {
+      closeModal();
+    }
+  };
   return (
     <>
       <Modal
@@ -54,17 +69,7 @@ function ModalView({ modalShow, closeModal }) {
           <button
             type="button"
             className="edit-button"
-            onClick={() =>
-              dispatch(
-                editUserName({
-                  token: token,
-                  username: {
-                    firstName: firstname,
-                    lastName: lastname,
-                  },
-                }),
-              )
-            }
+            onClick={() => handleSubmit()}
           >
             Send
           </button>
