@@ -25,7 +25,7 @@ function ProfileView() {
       {!loading ? (
         <>
           {data ? (
-            <main className="main bg-dark">
+            <main className="main bg-blue">
               <UserHeader firstName={data.firstName} lastName={data.lastName} />
               {account.length &&
                 account.map((accountData, index) => (
