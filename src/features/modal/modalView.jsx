@@ -1,16 +1,15 @@
 import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { closeModal, editUserName } from './modalFormSlice';
+import { closeModal, editUserName } from './modalSlice';
 
 function ModalView() {
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
   const dispatch = useDispatch();
+  const showModal = useSelector((state) => state.modal.isOpen);
   const token = useSelector((state) => state.login.auth.token);
-  const updateSuccess = useSelector((state) => state.edit.status.success);
-  const showModal = useSelector((state) => state.edit.modalOpen);
-  const close = dispatch(closeModal());
+  const close = () => dispatch(closeModal());
   const handleSubmit = () => {
     dispatch(
       editUserName({
@@ -21,9 +20,6 @@ function ModalView() {
         },
       }),
     );
-    /* if (updateSuccess) {
-      closeModal();
-    } */
   };
   return (
     <>

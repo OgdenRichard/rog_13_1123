@@ -3,8 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import API_BASE_URL from '../../config/apiSettings';
 
 const initialState = {
+  isOpen: false,
   data: null,
-  modalOpen: false,
   status: {
     success: false,
     loading: false,
@@ -13,7 +13,7 @@ const initialState = {
 };
 
 export const editUserName = createAsyncThunk(
-  'modalForm/editUserName',
+  'modal/editUserName',
   async (data) => {
     const body = JSON.stringify(data.username);
     const response = await axios.put(`${API_BASE_URL}/user/profile`, body, {
@@ -26,15 +26,15 @@ export const editUserName = createAsyncThunk(
   },
 );
 
-const modalFormSlice = createSlice({
-  name: 'editProfile',
+const modalSlice = createSlice({
+  name: 'modal',
   initialState,
   reducers: {
     openModal: (state) => {
-      state.modalOpen = true;
+      state.isOpen = true;
     },
     closeModal: (state) => {
-      state.modalOpen = false;
+      state.isOpen = false;
     },
   },
   extraReducers: (builder) => {
@@ -46,6 +46,7 @@ const modalFormSlice = createSlice({
     builder.addCase(editUserName.fulfilled, (state, action) => {
       state.status.loading = false;
       state.status.success = true;
+      state.isOpen = false;
       state.data = action.payload.body;
     });
     builder.addCase(editUserName.rejected, (state, action) => {
@@ -55,5 +56,5 @@ const modalFormSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal } = modalFormSlice.actions;
-export default modalFormSlice.reducer;
+export const { openModal, closeModal } = modalSlice.actions;
+export default modalSlice.reducer;

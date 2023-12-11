@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import ModalFormView from '../features/edit/ModalFormView';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../features/modal/modalSlice';
+import ModalView from '../features/modal/modalView';
 
 function UserHeader(props) {
   const { firstName, lastName } = props;
-  const [showModal, displayModal] = useState(false);
-  const closeModal = () => displayModal(false);
+  const dispatch = useDispatch();
   return (
     <>
       <div className="user-header">
@@ -16,12 +16,12 @@ function UserHeader(props) {
         <button
           type="button"
           className="edit-button"
-          onClick={() => displayModal(true)}
+          onClick={() => dispatch(openModal())}
         >
           Edit name
         </button>
       </div>
-      <ModalFormView modalShow={showModal} closeModal={closeModal} />
+      <ModalView />
     </>
   );
 }
