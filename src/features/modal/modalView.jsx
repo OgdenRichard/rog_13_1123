@@ -7,7 +7,7 @@ function ModalView() {
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
   const dispatch = useDispatch();
-  const showModal = useSelector((state) => state.modal.isOpen);
+  const showModal = useSelector((state) => state.edit.isOpen);
   const token = useSelector((state) => state.login.auth.token);
   const close = () => dispatch(closeModal());
   const handleSubmit = () => {
