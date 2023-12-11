@@ -25,6 +25,11 @@ export const getUserData = createAsyncThunk(
 const profileSlice = createSlice({
   name: 'user',
   initialState,
+  reducers: {
+    updateData: (state, action) => {
+      state.data = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getUserData.pending, (state) => {
       state.status.loading = true;
@@ -41,4 +46,5 @@ const profileSlice = createSlice({
   },
 });
 
+export const { updateData } = profileSlice.actions;
 export default profileSlice.reducer;
