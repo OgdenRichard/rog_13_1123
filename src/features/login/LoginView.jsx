@@ -3,8 +3,8 @@ import { Navigate } from 'react-router-dom';
 import { setPassword, setUsername, setRemember, userLogin } from './loginSlice';
 
 function LoginView() {
-  const username = useSelector((state) => state.login.login);
-  const pass = useSelector((state) => state.login.password);
+  const username = useSelector((state) => state.login.credentials.login);
+  const pass = useSelector((state) => state.login.credentials.password);
   const userConnected = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
 

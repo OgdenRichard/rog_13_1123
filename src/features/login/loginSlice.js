@@ -4,9 +4,11 @@ import API_BASE_URL from '../../config/apiSettings';
 
 const initialState = {
   isLoggedIn: false,
-  remember: false,
-  login: '',
-  password: '',
+  credentials: {
+    remember: false,
+    login: '',
+    password: '',
+  },
   auth: {
     loading: false,
     token: null,
@@ -40,19 +42,21 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     setUsername: (state, action) => {
-      state.login = action.payload;
+      state.credentials.login = action.payload;
     },
     setPassword: (state, action) => {
-      state.password = action.payload;
+      state.credentials.password = action.payload;
     },
     setRemember: (state, action) => {
-      state.remember = action.payload;
+      state.credentials.remember = action.payload;
     },
     logout: (state) => {
       state.isLoggedIn = false;
       state.auth.token = null;
-      state.password = '';
-      state.login = state.remember ? state.login : '';
+      state.credentials.password = '';
+      state.credentials.login = state.credentials.remember
+        ? state.credentials.login
+        : '';
     },
   },
   extraReducers: (builder) => {
@@ -63,8 +67,10 @@ const loginSlice = createSlice({
     });
     builder.addCase(userLogin.fulfilled, (state, action) => {
       state.isLoggedIn = true;
-      state.login = state.remember ? state.login : '';
-      state.password = '';
+      state.credentials.login = state.credentials.remember
+        ? state.credentials.login
+        : '';
+      state.credentials.password = '';
       state.auth.token = action.payload.body.token;
       state.auth.loading = false;
       state.auth.error = null;
