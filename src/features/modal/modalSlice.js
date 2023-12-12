@@ -39,9 +39,10 @@ const modalSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(editUserName.pending, (state) => {
+      state.data = null;
       state.status.loading = true;
       state.status.success = false;
-      state.status.error = '';
+      state.status.error = null;
     });
     builder.addCase(editUserName.fulfilled, (state, action) => {
       state.status.loading = false;

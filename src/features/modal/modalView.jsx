@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { closeModal, editUserName } from './modalSlice';
 
 function ModalView() {
-  const [firstname, setFirstName] = useState('');
-  const [lastname, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const dispatch = useDispatch();
   const showModal = useSelector((state) => state.edit.isOpen);
   const token = useSelector((state) => state.login.auth.token);
@@ -15,8 +15,8 @@ function ModalView() {
       editUserName({
         token,
         username: {
-          firstName: firstname,
-          lastName: lastname,
+          firstName,
+          lastName,
         },
       }),
     );
@@ -27,7 +27,7 @@ function ModalView() {
         show={showModal}
         onHide={close}
         backdrop="static"
-        keyboard={false}
+        keyboard
         centered
         style={{ backgroundColor: 'rgba(52, 52, 52, 0.8)' }}
       >

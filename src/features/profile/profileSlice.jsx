@@ -33,7 +33,8 @@ const profileSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getUserData.pending, (state) => {
       state.status.loading = true;
-      state.status.error = '';
+      state.data = null;
+      state.status.error = null;
     });
     builder.addCase(getUserData.fulfilled, (state, action) => {
       state.status.loading = false;

@@ -9,8 +9,8 @@ const initialState = {
   password: '',
   auth: {
     loading: false,
-    token: '',
-    error: '',
+    token: null,
+    error: null,
   },
 };
 
@@ -50,7 +50,7 @@ const loginSlice = createSlice({
     },
     logout: (state) => {
       state.isLoggedIn = false;
-      state.auth.token = '';
+      state.auth.token = null;
       state.password = '';
       state.login = state.remember ? state.login : '';
     },
@@ -58,14 +58,16 @@ const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(userLogin.pending, (state) => {
       state.auth.loading = true;
+      state.auth.token = null;
+      state.auth.error = null;
     });
-    // TODO reset credentials on success or error
     builder.addCase(userLogin.fulfilled, (state, action) => {
       state.isLoggedIn = true;
-      state.auth.loading = false;
-      state.auth.token = action.payload.body.token;
+      state.login = state.remember ? state.login : '';
       state.password = '';
-      state.auth.error = '';
+      state.auth.token = action.payload.body.token;
+      state.auth.loading = false;
+      state.auth.error = null;
     });
     builder.addCase(userLogin.rejected, (state, action) => {
       state.auth.loading = false;
