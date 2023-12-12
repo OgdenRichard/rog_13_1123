@@ -34,12 +34,12 @@ function LoginView() {
           </div>
           <div className="input-remember">
             <label htmlFor="remember-me">
-              Remember me
               <input
                 type="checkbox"
                 id="remember-me"
                 onChange={(e) => dispatch(setRemember(e.target.checked))}
               />
+              Remember me
             </label>
           </div>
           <button
