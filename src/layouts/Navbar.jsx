@@ -1,6 +1,8 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../features/login/loginSlice';
+import { resetLogin } from '../features/login/loginSlice';
+import { resetModal } from '../features/modal/modalSlice';
+import { resetProfile } from '../features/profile/profileSlice';
 import logo from '../assets/argentBankLogo.png';
 
 export const Navbar = () => {
@@ -10,7 +12,9 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(resetLogin());
+    dispatch(resetProfile());
+    dispatch(resetModal());
     navigate('/', { replace: true });
   };
 

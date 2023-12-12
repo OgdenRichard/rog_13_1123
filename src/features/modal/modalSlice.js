@@ -36,6 +36,11 @@ const modalSlice = createSlice({
     closeModal: (state) => {
       state.isOpen = false;
     },
+    resetModal: (state) => {
+      state.isOpen = false;
+      state.data = null;
+      state.status.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(editUserName.pending, (state) => {
@@ -57,5 +62,5 @@ const modalSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal } = modalSlice.actions;
+export const { openModal, closeModal, resetModal } = modalSlice.actions;
 export default modalSlice.reducer;

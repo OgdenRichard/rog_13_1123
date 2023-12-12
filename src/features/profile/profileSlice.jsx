@@ -29,6 +29,10 @@ const profileSlice = createSlice({
     updateData: (state, action) => {
       state.data = action.payload;
     },
+    resetProfile: (state) => {
+      state.data = null;
+      state.status.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getUserData.pending, (state) => {
@@ -47,5 +51,5 @@ const profileSlice = createSlice({
   },
 });
 
-export const { updateData } = profileSlice.actions;
+export const { updateData, resetProfile } = profileSlice.actions;
 export default profileSlice.reducer;
