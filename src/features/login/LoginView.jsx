@@ -5,6 +5,7 @@ import { setPassword, setUsername, setRemember, userLogin } from './loginSlice';
 function LoginView() {
   const username = useSelector((state) => state.login.credentials.login);
   const pass = useSelector((state) => state.login.credentials.password);
+  const remember = useSelector((state) => state.login.credentials.remember);
   const userConnected = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
 
@@ -18,6 +19,7 @@ function LoginView() {
               <input
                 type="text"
                 id="username"
+                placeholder={remember ? username : ''}
                 onChange={(e) => dispatch(setUsername(e.target.value))}
               />
             </label>
@@ -37,6 +39,7 @@ function LoginView() {
               <input
                 type="checkbox"
                 id="remember-me"
+                checked={remember}
                 onChange={(e) => dispatch(setRemember(e.target.checked))}
               />
               Remember me

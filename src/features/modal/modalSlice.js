@@ -7,7 +7,6 @@ const initialState = {
   isOpen: false,
   data: null,
   status: {
-    success: false,
     loading: false,
     error: null,
   },
@@ -42,12 +41,10 @@ const modalSlice = createSlice({
     builder.addCase(editUserName.pending, (state) => {
       state.data = null;
       state.status.loading = true;
-      state.status.success = false;
       state.status.error = null;
     });
     builder.addCase(editUserName.fulfilled, (state, action) => {
       state.status.loading = false;
-      state.status.success = true;
       state.isOpen = false;
       state.data = action.payload.body;
     });
@@ -57,7 +54,6 @@ const modalSlice = createSlice({
     });
     builder.addCase(logout, (state) => {
       state.data = null;
-      state.status.success = false;
       state.status.error = null;
     });
   },
