@@ -23,7 +23,10 @@ export const Navbar = () => {
           alt="Argent Bank Logo"
         />
       </NavLink>
-      <div className="main-nav-item">
+      <div
+        className="main-nav-item"
+        style={{ alignItems: userConnected ? 'baseline' : 'center' }}
+      >
         <span className="nav-username">
           <i className="fa fa-user-circle icon-username" />
           {userConnected && (
