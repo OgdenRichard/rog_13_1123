@@ -50,7 +50,7 @@ const loginSlice = createSlice({
     setRemember: (state, action) => {
       state.credentials.remember = action.payload;
     },
-    resetLogin: (state) => {
+    logout: (state) => {
       state.isLoggedIn = false;
       state.auth.token = null;
       state.credentials.password = '';
@@ -83,5 +83,5 @@ const loginSlice = createSlice({
 });
 
 export default loginSlice.reducer;
-export const { setPassword, setUsername, setRemember, resetLogin } =
+export const { setPassword, setUsername, setRemember, logout } =
   loginSlice.actions;

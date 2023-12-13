@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { logout } from '../login/loginSlice';
 import API_BASE_URL from '../../config/apiSettings';
 
 const initialState = {
@@ -29,10 +30,6 @@ const profileSlice = createSlice({
     updateData: (state, action) => {
       state.data = action.payload;
     },
-    resetProfile: (state) => {
-      state.data = null;
-      state.status.error = null;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(getUserData.pending, (state) => {
@@ -48,8 +45,12 @@ const profileSlice = createSlice({
       state.status.loading = false;
       state.status.error = action.error;
     });
+    builder.addCase(logout, (state) => {
+      state.data = null;
+      state.status.error = null;
+    });
   },
 });
 
-export const { updateData, resetProfile } = profileSlice.actions;
+export const { updateData } = profileSlice.actions;
 export default profileSlice.reducer;

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { logout } from '../login/loginSlice';
 import API_BASE_URL from '../../config/apiSettings';
 
 const initialState = {
@@ -36,11 +37,6 @@ const modalSlice = createSlice({
     closeModal: (state) => {
       state.isOpen = false;
     },
-    resetModal: (state) => {
-      state.isOpen = false;
-      state.data = null;
-      state.status.error = null;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(editUserName.pending, (state) => {
@@ -59,8 +55,13 @@ const modalSlice = createSlice({
       state.status.loading = false;
       state.status.error = action.error;
     });
+    builder.addCase(logout, (state) => {
+      state.data = null;
+      state.status.success = false;
+      state.status.error = null;
+    });
   },
 });
 
-export const { openModal, closeModal, resetModal } = modalSlice.actions;
+export const { openModal, closeModal } = modalSlice.actions;
 export default modalSlice.reducer;
