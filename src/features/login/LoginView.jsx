@@ -18,6 +18,7 @@ function LoginView() {
               Username
               <input
                 type="text"
+                className="login__email"
                 id="username"
                 placeholder={remember ? username : ''}
                 onChange={(e) => dispatch(setUsername(e.target.value))}

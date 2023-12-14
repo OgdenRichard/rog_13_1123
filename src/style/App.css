@@ -213,6 +213,14 @@ button:hover {
   font-size: 1.2rem;
 }
 
+.login__email::-webkit-input-placeholder {
+  color: black;
+}
+
+.login__email::-moz-placeholder {
+  opacity: 1;
+}
+
 .footer {
   display: flex;
   justify-content: center;

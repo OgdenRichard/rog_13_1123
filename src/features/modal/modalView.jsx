@@ -9,6 +9,7 @@ function ModalView() {
   const dispatch = useDispatch();
   const showModal = useSelector((state) => state.edit.isOpen);
   const token = useSelector((state) => state.login.auth.token);
+  const prevUsername = useSelector((state) => state.profile.data);
   const close = () => dispatch(closeModal());
   const handleSubmit = () => {
     dispatch(
@@ -41,6 +42,9 @@ function ModalView() {
               <input
                 type="text"
                 id="firstname"
+                placeholder={
+                  prevUsername.firstName ? prevUsername.firstName : ''
+                }
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </label>
@@ -51,6 +55,7 @@ function ModalView() {
               <input
                 type="text"
                 id="lastname"
+                placeholder={prevUsername.lastName ? prevUsername.lastName : ''}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </label>
