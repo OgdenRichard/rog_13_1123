@@ -13,10 +13,10 @@ export function ErrorPage({ message, code }) {
 
 ErrorPage.propTypes = {
   message: PropTypes.string,
-  code: PropTypes.string,
+  code: PropTypes.number,
 };
 
 ErrorPage.defaultProps = {
   message: 'Page not found',
-  code: '404',
+  code: 404,
 };

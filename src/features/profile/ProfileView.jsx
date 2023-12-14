@@ -39,7 +39,11 @@ function ProfileView() {
                 ))}
             </main>
           ) : (
-            <>{error && <ErrorPage />}</>
+            <>
+              {error && (
+                <ErrorPage message={error?.message} code={error?.status} />
+              )}
+            </>
           )}
         </>
       ) : (

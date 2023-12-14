@@ -13,13 +13,23 @@ const initialState = {
 
 export const getUserData = createAsyncThunk(
   'profile/getUserData',
-  async (token) => {
-    const response = await axios.post(`${API_BASE_URL}/user/profile`, null, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/user/profile`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(
+        error?.response?.data ||
+          error?.response?.data.error ||
+          error?.response?.data?.message ||
+          error?.message ||
+          error.toString(),
+      );
+    }
   },
 );
 
@@ -43,7 +53,7 @@ const profileSlice = createSlice({
     });
     builder.addCase(getUserData.rejected, (state, action) => {
       state.status.loading = false;
-      state.status.error = action.error;
+      state.status.error = action.payload;
     });
     builder.addCase(logout, (state) => {
       state.data = null;
