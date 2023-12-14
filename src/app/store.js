@@ -9,10 +9,14 @@ import modalReducer from '../features/modal/modalSlice';
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['login'],
 };
 
 const rootReducer = combineReducers({
-  login: loginReducer,
+  login: persistReducer(
+    { key: 'login', storage, blacklist: ['auth'] },
+    loginReducer,
+  ),
   profile: profileReducer,
   edit: modalReducer,
 });
