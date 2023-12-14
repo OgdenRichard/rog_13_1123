@@ -27,9 +27,9 @@ export const userLogin = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error?.response?.data?.message ||
+        error?.response?.data ||
           error?.response?.data.error ||
-          error?.response?.data ||
+          error?.response?.data?.message ||
           error?.message ||
           error.toString(),
       );
@@ -77,7 +77,7 @@ const loginSlice = createSlice({
     });
     builder.addCase(userLogin.rejected, (state, action) => {
       state.auth.loading = false;
-      state.auth.error = action.error;
+      state.auth.error = action.payload;
     });
   },
 });

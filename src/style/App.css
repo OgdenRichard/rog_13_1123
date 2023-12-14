@@ -315,6 +315,16 @@ button:hover {
   text-align: center;
 }
 
+.error__login {
+  display: inline-block;
+  width: 100%;
+  margin-top: 1em;
+  padding: 10px 0;
+  font-weight: bold;
+  background: red;
+  color: white;
+}
+
 .spinner__centered {
   position: absolute;
   top: 0;

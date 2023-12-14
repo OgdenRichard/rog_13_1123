@@ -6,6 +6,7 @@ function LoginView() {
   const username = useSelector((state) => state.login.credentials.login);
   const pass = useSelector((state) => state.login.credentials.password);
   const remember = useSelector((state) => state.login.credentials.remember);
+  const error = useSelector((state) => state.login.auth.error);
   const userConnected = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
 
@@ -46,6 +47,7 @@ function LoginView() {
               Remember me
             </label>
           </div>
+          {error && <span className="error__login">{error.message}</span>}
           <button
             type="button"
             className="sign-in-button"
