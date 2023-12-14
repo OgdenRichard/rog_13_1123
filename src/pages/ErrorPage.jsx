@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-export function ErrorPage({ message }) {
+export function ErrorPage({ message, code }) {
   return (
     <main className="main bg-dark">
       <div className="error__container" id="error-page">
-        <h1>Erreur</h1>
+        <h1>Error {code}</h1>
         <h2>{message}</h2>
       </div>
     </main>
@@ -13,8 +13,10 @@ export function ErrorPage({ message }) {
 
 ErrorPage.propTypes = {
   message: PropTypes.string,
+  code: PropTypes.string,
 };
 
 ErrorPage.defaultProps = {
-  message: 'Page introuvable',
+  message: 'Page not found',
+  code: '404',
 };

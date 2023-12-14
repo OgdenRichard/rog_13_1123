@@ -35,6 +35,7 @@ button:hover {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: 80vh;
 }
@@ -311,6 +312,7 @@ button:hover {
 .error__container {
   padding: 5px 20px;
   color: white;
+  text-align: center;
 }
 
 .spinner__centered {
