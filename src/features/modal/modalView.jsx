@@ -1,4 +1,5 @@
 import Modal from 'react-bootstrap/Modal';
+import Alert from 'react-bootstrap/Alert';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { closeModal, editUserName } from './modalSlice';
@@ -8,7 +9,8 @@ function ModalView() {
   const [lastName, setLastName] = useState('');
   const dispatch = useDispatch();
   const showModal = useSelector((state) => state.edit.isOpen);
-  const token = useSelector((state) => state.login.auth.token);
+  const error = useSelector((state) => state.edit.status.error);
+  const token = useSelector((state) => state.login.token);
   const prevUsername = useSelector((state) => state.profile.data);
   const close = () => dispatch(closeModal());
   const handleSubmit = () => {
@@ -36,6 +38,11 @@ function ModalView() {
           <Modal.Title>Edit username</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {error && (
+            <Alert variant="danger">
+              Error {error?.status} : {error?.message}
+            </Alert>
+          )}
           <div className="input-wrapper">
             <label htmlFor="firstname">
               First name

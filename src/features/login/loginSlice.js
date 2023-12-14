@@ -4,6 +4,7 @@ import API_BASE_URL from '../../config/apiSettings';
 
 const initialState = {
   isLoggedIn: false,
+  token: null,
   credentials: {
     remember: false,
     login: '',
@@ -11,7 +12,6 @@ const initialState = {
   },
   auth: {
     loading: false,
-    token: null,
     error: null,
   },
 };
@@ -71,7 +71,7 @@ const loginSlice = createSlice({
         ? state.credentials.login
         : '';
       state.credentials.password = '';
-      state.auth.token = action.payload.body.token;
+      state.token = action.payload.body.token;
       state.auth.loading = false;
       state.auth.error = null;
     });

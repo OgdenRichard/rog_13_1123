@@ -14,15 +14,25 @@ const initialState = {
 
 export const editUserName = createAsyncThunk(
   'modal/editUserName',
-  async (data) => {
-    const body = JSON.stringify(data.username);
-    const response = await axios.put(`${API_BASE_URL}/user/profile`, body, {
-      headers: {
-        Authorization: `Bearer ${data.token}`,
-        'Content-Type': 'application/json',
-      },
-    });
-    return response.data;
+  async (data, { rejectWithValue }) => {
+    try {
+      const body = JSON.stringify(data.username);
+      const response = await axios.put(`${API_BASE_URL}/user/profile`, body, {
+        headers: {
+          Authorization: `Bearer ${data.token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(
+        error?.response?.data ||
+          error?.response?.data.error ||
+          error?.response?.data?.message ||
+          error?.message ||
+          error.toString(),
+      );
+    }
   },
 );
 
@@ -35,6 +45,7 @@ const modalSlice = createSlice({
     },
     closeModal: (state) => {
       state.isOpen = false;
+      state.status.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -50,7 +61,7 @@ const modalSlice = createSlice({
     });
     builder.addCase(editUserName.rejected, (state, action) => {
       state.status.loading = false;
-      state.status.error = action.error;
+      state.status.error = action.payload;
     });
     builder.addCase(logout, (state) => {
       state.data = null;

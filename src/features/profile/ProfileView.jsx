@@ -9,7 +9,7 @@ import { account } from '../../data/accountPlaceholder';
 
 function ProfileView() {
   const userConnected = useSelector((state) => state.login.isLoggedIn);
-  const token = useSelector((state) => state.login.auth.token);
+  const token = useSelector((state) => state.login.token);
   const loading = useSelector((state) => state.profile.status.loading);
   const error = useSelector((state) => state.profile.status.error);
   const data = useSelector((state) => state.profile.data);
