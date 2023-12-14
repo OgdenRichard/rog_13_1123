@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Spinner from 'react-bootstrap/Spinner';
 import { getUserData } from './profileSlice';
 import UserHeader from '../../components/UserHeader';
 import Account from '../../components/Account';
@@ -42,7 +43,16 @@ function ProfileView() {
           )}
         </>
       ) : (
-        <>Loading</>
+        <>
+          <main className="main bg-blue">
+            <Spinner
+              className="spinner__centered"
+              animation="border"
+              variant="success"
+              role="status"
+            />
+          </main>
+        </>
       )}
     </>
   );
