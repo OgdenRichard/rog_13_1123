@@ -25,13 +25,7 @@ export const editUserName = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return rejectWithValue(
-        error?.response?.data ||
-          error?.response?.data.error ||
-          error?.response?.data?.message ||
-          error?.message ||
-          error.toString(),
-      );
+      return rejectWithValue(error?.response?.data || error.toString());
     }
   },
 );
