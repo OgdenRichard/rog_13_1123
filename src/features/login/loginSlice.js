@@ -26,13 +26,7 @@ export const userLogin = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return rejectWithValue(
-        error?.response?.data ||
-          error?.response?.data.error ||
-          error?.response?.data?.message ||
-          error?.message ||
-          error.toString(),
-      );
+      return rejectWithValue(error?.response?.data || error.toString());
     }
   },
 );
@@ -52,7 +46,7 @@ const loginSlice = createSlice({
     },
     logout: (state) => {
       state.isLoggedIn = false;
-      state.auth.token = null;
+      state.token = null;
       state.credentials.password = '';
       state.credentials.login = state.credentials.remember
         ? state.credentials.login
