@@ -1,27 +1,37 @@
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { closeModal, editUserName } from './modalSlice';
+import {
+  closeModal,
+  setFirstName,
+  setLastName,
+  editUserName,
+  setInputError,
+} from './modalSlice';
 
 function ModalView() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const dispatch = useDispatch();
   const showModal = useSelector((state) => state.edit.isOpen);
-  const error = useSelector((state) => state.edit.status.error);
   const token = useSelector((state) => state.login.token);
+  const firstName = useSelector((state) => state.edit.userName.firstName);
+  const lastName = useSelector((state) => state.edit.userName.lastName);
+  const inputError = useSelector((state) => state.edit.userName.inputError);
+  const apiError = useSelector((state) => state.edit.status.error);
   const close = () => dispatch(closeModal());
   const handleSubmit = () => {
-    dispatch(
-      editUserName({
-        token,
-        username: {
-          firstName,
-          lastName,
-        },
-      }),
-    );
+    if (firstName.trim() && lastName.trim()) {
+      dispatch(
+        editUserName({
+          token,
+          username: {
+            firstName,
+            lastName,
+          },
+        }),
+      );
+    } else {
+      dispatch(setInputError(true));
+    }
   };
   return (
     <>
@@ -37,9 +47,14 @@ function ModalView() {
           <Modal.Title>Edit username</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {error && (
+          {inputError && (
             <Alert variant="danger">
-              Error {error?.status} : {error?.message}
+              First name and last name must contain at least one character
+            </Alert>
+          )}
+          {apiError && (
+            <Alert variant="danger">
+              Error {apiError?.status} : {apiError?.message}
             </Alert>
           )}
           <div className="input-wrapper">
@@ -48,7 +63,7 @@ function ModalView() {
               <input
                 type="text"
                 id="firstname"
-                onChange={(e) => setFirstName(e.target.value)}
+                onChange={(e) => dispatch(setFirstName(e.target.value))}
               />
             </label>
           </div>
@@ -58,7 +73,7 @@ function ModalView() {
               <input
                 type="text"
                 id="lastname"
-                onChange={(e) => setLastName(e.target.value)}
+                onChange={(e) => dispatch(setLastName(e.target.value))}
               />
             </label>
           </div>

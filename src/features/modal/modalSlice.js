@@ -6,6 +6,11 @@ import API_BASE_URL from '../../config/apiSettings';
 const initialState = {
   isOpen: false,
   data: null,
+  userName: {
+    inputError: false,
+    firstName: '',
+    lastName: '',
+  },
   status: {
     loading: false,
     error: null,
@@ -38,8 +43,21 @@ const modalSlice = createSlice({
       state.isOpen = true;
     },
     closeModal: (state) => {
+      state.userName.firstName = '';
+      state.userName.lastName = '';
       state.isOpen = false;
       state.status.error = null;
+    },
+    setFirstName: (state, action) => {
+      state.userName.firstName = action.payload;
+      state.userName.inputError = false;
+    },
+    setLastName: (state, action) => {
+      state.userName.lastName = action.payload;
+      state.userName.inputError = false;
+    },
+    setInputError: (state, action) => {
+      state.userName.inputError = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -51,6 +69,8 @@ const modalSlice = createSlice({
     builder.addCase(editUserName.fulfilled, (state, action) => {
       state.status.loading = false;
       state.isOpen = false;
+      state.userName.firstName = '';
+      state.userName.lastName = '';
       state.data = action.payload.body;
     });
     builder.addCase(editUserName.rejected, (state, action) => {
@@ -64,5 +84,11 @@ const modalSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal } = modalSlice.actions;
+export const {
+  openModal,
+  closeModal,
+  setFirstName,
+  setLastName,
+  setInputError,
+} = modalSlice.actions;
 export default modalSlice.reducer;
