@@ -1,5 +1,6 @@
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   closeModal,
@@ -16,6 +17,7 @@ function ModalView() {
   const firstName = useSelector((state) => state.edit.userName.firstName);
   const lastName = useSelector((state) => state.edit.userName.lastName);
   const inputError = useSelector((state) => state.edit.userName.inputError);
+  const loading = useSelector((state) => state.edit.status.loading);
   const apiError = useSelector((state) => state.edit.status.error);
   const close = () => dispatch(closeModal());
   const handleSubmit = () => {
@@ -91,7 +93,7 @@ function ModalView() {
             className="edit-button"
             onClick={() => handleSubmit()}
           >
-            Send
+            {loading ? <Spinner animation="border" size="sm" /> : 'Send'}
           </button>
         </Modal.Footer>
       </Modal>

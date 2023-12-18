@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import Spinner from 'react-bootstrap/Spinner';
+import { useSelector, useDispatch } from 'react-redux';
 import { getUserData } from './profileSlice';
 import UserHeader from '../../components/UserHeader';
 import Account from '../../components/Account';

@@ -1,4 +1,5 @@
 import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { setPassword, setUsername, setRemember, userLogin } from './loginSlice';
@@ -7,6 +8,7 @@ function LoginView() {
   const username = useSelector((state) => state.login.credentials.login);
   const pass = useSelector((state) => state.login.credentials.password);
   const remember = useSelector((state) => state.login.credentials.remember);
+  const loading = useSelector((state) => state.login.auth.loading);
   const error = useSelector((state) => state.login.auth.error);
   const userConnected = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
@@ -56,7 +58,7 @@ function LoginView() {
               dispatch(userLogin({ email: username, password: pass }))
             }
           >
-            Sign In
+            {loading ? <Spinner animation="border" size="sm" /> : 'Log In'}
           </button>
         </form>
       ) : (
