@@ -43,9 +43,10 @@ const modalSlice = createSlice({
       state.isOpen = true;
     },
     closeModal: (state) => {
+      state.isOpen = false;
+      state.userName.inputError = false;
       state.userName.firstName = '';
       state.userName.lastName = '';
-      state.isOpen = false;
       state.status.error = null;
     },
     setFirstName: (state, action) => {
