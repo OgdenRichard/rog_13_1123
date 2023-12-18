@@ -6,6 +6,7 @@ import logo from '../assets/argentBankLogo.png';
 export const Navbar = () => {
   const userConnected = useSelector((state) => state.login.isLoggedIn);
   const data = useSelector((state) => state.profile.data);
+  const updatedData = useSelector((state) => state.edit.data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,7 +35,9 @@ export const Navbar = () => {
               to="/profile"
               style={{ textDecoration: 'none', marginRight: '0.5em' }}
             >
-              {data && <>{data.firstName}</>}
+              {data && (
+                <>{updatedData ? updatedData.firstName : data.firstName}</>
+              )}
             </NavLink>
           )}
         </span>
