@@ -193,6 +193,7 @@ button:hover {
 
 .input-remember {
   display: flex;
+  margin-bottom: 1rem;
 }
 
 .input-remember input {
@@ -313,16 +314,6 @@ button:hover {
   padding: 5px 20px;
   color: white;
   text-align: center;
-}
-
-.error__login {
-  display: inline-block;
-  width: 100%;
-  margin-top: 1em;
-  padding: 10px 0;
-  font-weight: bold;
-  background: red;
-  color: white;
 }
 
 .spinner__centered {

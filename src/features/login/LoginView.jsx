@@ -1,3 +1,4 @@
+import Alert from 'react-bootstrap/Alert';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { setPassword, setUsername, setRemember, userLogin } from './loginSlice';
@@ -47,7 +48,7 @@ function LoginView() {
               Remember me
             </label>
           </div>
-          {error && <span className="error__login">{error.message}</span>}
+          {error && <Alert variant="danger">{error.message}</Alert>}
           <button
             type="button"
             className="sign-in-button"
