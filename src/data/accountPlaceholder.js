@@ -1,17 +1,50 @@
-export const account = [
+export const accounts = [
   {
+    id: '65844ed007fa9685343c2c18',
+    userId: '655728e7fe586f090404b57b',
+    type: 'checking',
     title: 'Argent Bank Checking (x8349)',
     amount: '$2,082.79',
     description: 'Available Balance',
   },
   {
+    id: '65844ed9aa12d21900df60e2',
+    userId: '655728e7fe586f090404b57b',
+    type: 'savings',
     title: 'Argent Bank Savings (x6712)',
     amount: '$10,928.42',
     description: 'Available Balance',
   },
   {
+    id: '65844ee183a1d0604433b8e0',
+    userId: '655728e7fe586f090404b57b',
+    type: 'creditcard',
     title: 'Argent Bank Credit Card (x8349)',
     amount: '$184.30',
+    description: 'Current Balance',
+  },
+  {
+    id: '65844eea9510b5dec0edc77d',
+    userId: '655728e7fe586f090404b57c',
+    type: 'checking',
+    title: 'Argent Bank Checking (x8268)',
+    amount: '$5,200.24',
+    description: 'Available Balance',
+  },
+  {
+    id: '65844ef4f67f07b8b27decbd',
+    userId: '655728e7fe586f090404b57c',
+    type: 'savings',
+    title: 'Argent Bank Savings (x7614)',
+    amount: '$9,320.56',
+    description: 'Available Balance',
+  },
+  {
+    id: '65844efde9a73c9c27eeb0cf',
+    userId: '655728e7fe586f090404b57c',
+    type: 'creditcard',
+    title: 'Argent Bank Credit Card (x8268)',
+    amount: '$525.12',
     description: 'Current Balance',
   },
 ];

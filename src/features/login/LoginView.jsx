@@ -33,7 +33,7 @@ function LoginView() {
             <label htmlFor="password">
               Password
               <input
-                type="text"
+                type="password"
                 id="password"
                 onChange={(e) => dispatch(setPassword(e.target.value))}
               />
